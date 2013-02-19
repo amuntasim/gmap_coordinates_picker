@@ -7,11 +7,11 @@ require "gmap_coordinates_picker/version"
 Gem::Specification.new do |s|
   s.name        = "gmap_coordinates_picker"
   s.version     = GmapCoordinatesPicker::VERSION
-  s.authors     = ["TODO: Your name"]
-  s.email       = ["TODO: Your email"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of GmapCoordinatesPicker."
-  s.description = "TODO: Description of GmapCoordinatesPicker."
+  s.authors     = ["Muntasim Ahmed"]
+  s.email       = ["ahmed2tul@gmail.com"]
+  s.homepage    = ""
+  s.summary     = "works to provide an easy to use Google Maps interface for displaying and setting geographic co-ordinates"
+  s.description = "It works without any dependency to any third party library"
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]
