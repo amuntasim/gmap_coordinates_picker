@@ -17,13 +17,18 @@ gem " gmap_coordinates_picker"
 Then, add in your form:
 
 ```ruby
-<%= form.gmap_coordinate_picker :gmap_conf => {:lat_column => 'latitude', :lng_column => 'longitude', :zoom_level => 10 }, :default_coordinates => [lat,lng]  %>
+<%= form.gmap_coordinate_picker :gmap_conf => {:lat_column => 'latitude', :lng_column => 'longitude' }, :zoom_level => 10, :default_coordinates => [lat,lng]  %>
 ```
 
 Or, user is as form helper:
 
 ```ruby
-<%= render_gmap_coordinate_picker :gmap_conf => {:lat_column => 'latitude', :lng_column => 'longitude', :zoom_level => 10 }, :default_coordinates => [lat,lng]  %>
+<%= render_gmap_coordinate_picker :gmap_conf => {:lat_column => 'latitude', :lng_column => 'longitude' }, :zoom_level => 10, :default_coordinates => [lat,lng]  %>
+```
+To display static map:
+
+```ruby
+<%= render_gmap_coordinate_picker :static => 'true', :zoom_level => 10 , :default_coordinates => [lat,lng]  %>
 ```
 
 
@@ -36,9 +41,19 @@ beside the option depicted on the example above it can be configured with the fo
 - `map_width` - default "600px
 - `map_height` - default "400px"
 - `api_key` - Google Map api key (optional)
+- 'static'  - to display only static map, by default it set to false and the map will be editable
+- 'map_handler' - javascript map object to operate custom event on rendered map by default gMapObj is assigned as map object. You can implement any google map API methods like setCenter, zoom with that onject
 
 
+VERSION
+=======
 
+-0.0.3
+    - `static map` feature added
+    -  `javascript map handler` support added
+
+-0.0.2
+    render_gmap_coordinate_picker for for helper
 
 LICENSE
 =======
