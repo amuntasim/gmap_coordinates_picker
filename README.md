@@ -42,7 +42,7 @@ beside the option depicted on the example above it can be configured with the fo
 - `map_height` - default "400px"
 - `api_key` - Google Map api key (optional)
 - 'static'  - to display only static map, by default it set to false and the map will be editable
-- 'map_handler' - javascript map object to operate custom event on rendered map by default gMapObj is assigned as map object. You can implement any google map API methods like setCenter, zoom with that onject
+- 'map_handler' - javascript map object to operate custom event on rendered map by default gMapObj is assigned as map object. You can implement any google map API methods like setCenter, zoom with that object
 
 
 VERSION
