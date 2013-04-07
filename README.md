@@ -17,13 +17,13 @@ gem " gmap_coordinates_picker"
 Then, add in your form:
 
 ```ruby
-<%= form.gmap_coordinate_picker :gmap_conf => {:lat_column => 'latitude', :lng_column => 'longitude' }, :zoom_level => 10, :default_coordinates => [lat,lng]  %>
+<%= form.gmap_coordinate_picker :lat_column => 'latitude', :lng_column => 'longitude' , :zoom_level => 10, :default_coordinates => [lat,lng]  %>
 ```
 
 Or, user is as form helper:
 
 ```ruby
-<%= render_gmap_coordinate_picker :gmap_conf => {:lat_column => 'latitude', :lng_column => 'longitude' }, :zoom_level => 10, :default_coordinates => [lat,lng]  %>
+<%= render_gmap_coordinate_picker :lat_column => 'latitude', :lng_column => 'longitude' , :zoom_level => 10, :default_coordinates => [lat,lng]  %>
 ```
 To display static map:
 
@@ -44,9 +44,12 @@ beside the option depicted on the example above it can be configured with the fo
 - 'static'  - to display only static map, by default it set to false and the map will be editable
 - 'map_handler' - javascript map object to operate custom event on rendered map by default gMapObj is assigned as map object. You can implement any google map API methods like setCenter, zoom with that object
 
-=== General configuration options
+General configuration options
+=============================
 
-You can configure the following default values by overriding these values using <tt>GmapCoordinatesPicker.configure</tt> method.
+You can configure the following default values by overriding these values using:
+GmapCoordinatesPicker.configure method.
+
   lat_column #= :latitude                                                                       
   lng_column #= :longitude                                                                      
   default_coordinates #= [23.727666666, 90.410550] #Dhaka (my home town) center point :)        
@@ -58,8 +61,10 @@ You can configure the following default values by overriding these values using 
 
 There's a handy generator that generates the default configuration file into config/initializers directory.
 Run the following generator command, then edit the generated file.
-  % rails g gmap_coordinates_picker:config
 
+```ruby
+rails g gmap_coordinates_picker:config
+```
 
 VERSION
 =======
