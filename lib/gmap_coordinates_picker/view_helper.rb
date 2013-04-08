@@ -5,8 +5,8 @@ module GmapCoordinatesPicker #:nodoc
       unless options[:static].to_s == 'true'
         lat_column = options[:gmap_conf][:lat_column]
         lng_column = options[:gmap_conf][:lng_column]
-        lat_column_value = options[:object].present? ? options[:object].send(lat_column) : default_coordinates[0]
-        lng_column_value = options[:object].present? ? options[:object].send(lng_column) : default_coordinates[1]
+        lat_column_value = options[:object].present? ? options[:object].send(lat_column) : default_coordinates[0] # here
+        lng_column_value = options[:object].present? ? options[:object].send(lng_column) : default_coordinates[1] # here
         prefix = options[:object].present? ? options[:object].class.name.downcase : "gmap_coordinate_picker"
         lat_dom_id = "#{prefix}_#{lat_column}"
         lng_dom_id = "#{prefix}_#{lng_column}"
