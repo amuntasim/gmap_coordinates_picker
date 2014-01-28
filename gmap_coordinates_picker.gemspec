@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.summary     = "works to provide an easy to use Google Maps interface for displaying and setting geographic co-ordinates"
   s.description = "It works without any dependency to any third party library"
 
-  s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
+  s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.md"]
   s.test_files = Dir["test/**/*"]
 
   s.add_dependency "rails", ">= 3.1.0"

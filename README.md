@@ -68,7 +68,8 @@ rails g gmap_coordinates_picker:config
 
 VERSION
 =======
-
+-0.1.0
+    -  Rails4 support
 -0.0.3
     - `static map` feature added
     -  `javascript map handler` support added
