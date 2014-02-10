@@ -37,8 +37,8 @@
             }
 
             map.setCenter(location);
-            jQuery("#<%= lat_dom_id%>").val(location.lat());
-            jQuery("#<%=lng_dom_id %>").val(location.lng());
+            jQuery("#<%= lat_dom_id %>").val(location.lat()).change();
+            jQuery("#<%= lng_dom_id %>").val(location.lng()).change();
         }
 
     });
