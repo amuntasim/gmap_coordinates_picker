@@ -4,23 +4,29 @@
 
     jQuery(function () {
         var marker = null;
-        var latlng = new google.maps.LatLng(<%= default_coordinates[0]%>, <%=default_coordinates[1] %>);
+        var defaultPoint = null
 
+        try {
+            defaultPoint = new google.maps.LatLng(<%= default_coordinates[0]%>, <%=default_coordinates[1] %>);
+        }
+        catch (err) {
+
+        }
         var myOptions = {
             zoom: <%=zoom_level %>,
-            center:latlng,
-            mapTypeId:google.maps.MapTypeId.ROADMAP
+            center: defaultPoint,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
         };
 
         var map = new google.maps.Map(document.getElementById("<%=map_container%>"), myOptions);
         <%= map_handler%> = map;
 
         marker = new google.maps.Marker({
-            position:new google.maps.LatLng(<%= default_coordinates[0]%>,<%=default_coordinates[1] %>),
-            map:map
+            position: defaultPoint,
+            map: map
         });
 
     });
 </script>
-<div class="<%= map_container_class%>" id="<%=map_container%>" style="<%= "width:#{map_width};height:#{map_height}"%>">
+<div class="<%= map_container_class %>" id="<%= map_container %>" style="<%= "width:#{map_width};height:#{map_height}" %>">
 </div>

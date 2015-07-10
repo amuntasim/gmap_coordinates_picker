@@ -1,14 +1,23 @@
 <%= javascript_include_tag ("http://maps.googleapis.com/maps/api/js?key=#{api_key}&sensor=false") %>
 <script type="text/javascript">
     var <%= map_handler%> = <%= map_handler%> || {};
+    var <%= map_handler%>Marker = <%= map_handler%>Marker || {};
 
     jQuery(function () {
         var marker = null;
-        var latlng = new google.maps.LatLng(<%= default_coordinates[0]%>, <%=default_coordinates[1] %>);
+        var defaultPoint = null;
+        var center = null;
+
+         <% if lat_column_value &&  lng_column_value%>
+            defaultPoint = new google.maps.LatLng(<%= lat_column_value%>, <%=lng_column_value %>);
+        <% end %>
+        <% unless default_coordinates.empty?%>
+            center = new google.maps.LatLng(<%= default_coordinates[0]%>, <%=default_coordinates[1] %>);
+        <% end %>
 
         var myOptions = {
             zoom: <%=zoom_level %>,
-            center:latlng,
+            center: center,
             mapTypeId:google.maps.MapTypeId.ROADMAP
         };
 
@@ -17,10 +26,12 @@
 
         <% if lat_column_value && lng_column_value%>
         marker = new google.maps.Marker({
-            position:new google.maps.LatLng(<%= lat_column_value%>,<%=lng_column_value %>),
+            position:defaultPoint,
             map:map
         });
     <% end%>
+
+        <%= map_handler%>Marker = marker;
 
         google.maps.event.addListener(map, 'click', function(e) {
             updateLocation(e.latLng);
@@ -35,7 +46,7 @@
                     map: map
                 });
             }
-
+            <%= map_handler%>Marker = marker;
             map.setCenter(location);
             jQuery("#<%= lat_dom_id%>").val(location.lat());
             jQuery("#<%=lng_dom_id %>").val(location.lng());

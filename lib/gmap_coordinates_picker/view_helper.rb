@@ -10,8 +10,8 @@ module GmapCoordinatesPicker #:nodoc
         lat_column = options[:lat_column] || options[:gmap_conf][:lat_column] ||  GmapCoordinatesPicker.config.lat_column
         lng_column = options[:lng_column] || options[:gmap_conf][:lng_column] || GmapCoordinatesPicker.config.lng_column
         default_coordinates = options[:default_coordinates] || GmapCoordinatesPicker.config.default_coordinates
-        lat_column_value = options[:object].present? ? options[:object].send(lat_column) : default_coordinates[0]
-        lng_column_value = options[:object].present? ? options[:object].send(lng_column) : default_coordinates[1]
+        lat_column_value = options[:object].present? ? options[:object].send(lat_column) || default_coordinates[0] : default_coordinates[0]
+        lng_column_value = options[:object].present? ? options[:object].send(lng_column) || default_coordinates[1]  : default_coordinates[1]
         prefix = options[:object].present? ? options[:object].class.name.downcase : "gmap_coordinate_picker"
         lat_dom_id = "#{prefix}_#{lat_column}"
         lng_dom_id = "#{prefix}_#{lng_column}"
@@ -25,7 +25,7 @@ module GmapCoordinatesPicker #:nodoc
           :map_container_class => options[:map_container_class] || GmapCoordinatesPicker.config.map_container_class,
           :map_width => options[:map_width] || GmapCoordinatesPicker.config.map_width,
           :map_height => options[:map_height] || GmapCoordinatesPicker.config.map_height,
-          :default_coordinates => options[:default_coordinates] || GmapCoordinatesPicker.config.default_coordinates,
+          :default_coordinates => options[:default_coordinates].empty? ?  GmapCoordinatesPicker.config.default_coordinates : options[:default_coordinates],
       }
 
       editable_map_locals = {
