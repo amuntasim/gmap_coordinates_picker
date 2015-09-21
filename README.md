@@ -5,6 +5,11 @@ works to provide an easy to use Google Maps interface for displaying and setting
 
 Where a latitude and longitude is set on the model, it is indicated by a marker shown on a Google map centered at the marker. The administrator can change the value of these fields by clicking on the desired new location on the map.
 
+Demo app source code
+====================
+
+https://github.com/amuntasim/gmap-coordicate-picker-demo
+
 Usage
 =====
 
