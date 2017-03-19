@@ -22,13 +22,13 @@ gem " gmap_coordinates_picker"
 Then, add in your form:
 
 ```ruby
-<%= form.gmap_coordinate_picker :lat_column => 'latitude', :lng_column => 'longitude' , :zoom_level => 10, :default_coordinates => [lat,lng]  %>
+<%= form.gmap_coordinate_picker :lat_column => 'latitude', :lng_column => 'longitude' , :zoom_level => 10, :default_coordinates => [lat,lng], autocomplete: { enable: true, class: 'form-control' }  %>
 ```
 
 Or, user is as form helper:
 
 ```ruby
-<%= render_gmap_coordinate_picker :lat_column => 'latitude', :lng_column => 'longitude' , :zoom_level => 10, :default_coordinates => [lat,lng]  %>
+<%= render_gmap_coordinate_picker :lat_column => 'latitude', :lng_column => 'longitude' , :zoom_level => 10, :default_coordinates => [lat,lng], autocomplete: { enable: true, class: 'form-control' }  %>
 ```
 To display static map:
 
