@@ -40,7 +40,6 @@
         <% if autocomplete[:enable] %>
           var input = document.getElementById('searchInput');
           var autocomplete = new google.maps.places.Autocomplete(input);
-          gAutocomplete = autocomplete;
           autocomplete.bindTo('bounds', map);
 
           autocomplete.addListener('place_changed', function() {
