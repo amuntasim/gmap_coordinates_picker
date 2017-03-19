@@ -22,6 +22,7 @@ module GmapCoordinatesPicker
     config_accessor :map_container_class
     config_accessor :map_width
     config_accessor :map_height
+    config_accessor :autocomplete
   end
 
   configure do |config|
@@ -30,6 +31,7 @@ module GmapCoordinatesPicker
     config.default_coordinates = [23.727666666, 90.410550] #Dhaka (my home town) center point :)
     config.map_handler = 'gMapObj'
     config.zoom_level = 10
+    config.autocomplete = { enable: true, class: 'form-control'}
     config.map_container_class = 'gmap_coordinate_picker_container'
     config.map_width = '600px'
     config.map_height = '400px'
