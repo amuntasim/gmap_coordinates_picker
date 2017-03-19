@@ -1,4 +1,4 @@
-<%= javascript_include_tag ("https://maps.googleapis.com/maps/api/js?key=#{api_key}&sensor=false") %>
+<%= javascript_include_tag ("https://maps.googleapis.com/maps/api/js?key=#{api_key}&sensor=false&libraries=places") %>
 <script type="text/javascript">
     var <%= map_handler%> = <%= map_handler%> || {};
     var <%= map_handler%>Marker = <%= map_handler%>Marker || {};
@@ -37,6 +37,20 @@
             updateLocation(e.latLng);
         });
 
+        <% if autocomplete[:enable] %>
+          var input = document.getElementById('searchInput');
+          var autocomplete = new google.maps.places.Autocomplete(input);
+          gAutocomplete = autocomplete;
+          autocomplete.bindTo('bounds', map);
+
+          autocomplete.addListener('place_changed', function() {
+            var place = autocomplete.getPlace();
+            var location = place.geometry.location;
+            updateLocation(location)
+            return;
+          });
+        <% end %>
+
         function updateLocation(location) {
             if(marker) {
                 marker.setPosition(location);
@@ -54,6 +68,12 @@
 
     });
 </script>
+<% if autocomplete[:enable] %>
+  <div>
+    <input type='text' class='<%= autocomplete[:class] %>' id='searchInput'/>
+  </div>
+  <br/>
+<% end %>
 <div class="<%= map_container_class%>" id="<%=map_container%>" style="<%= "width:#{map_width};height:#{map_height}"%>">
 </div>
 <%= lat_field%>

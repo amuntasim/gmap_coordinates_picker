@@ -13,6 +13,7 @@ module GmapCoordinatesPicker #:nodoc
         lat_column_value = options[:object].present? ? options[:object].send(lat_column) || default_coordinates[0] : default_coordinates[0]
         lng_column_value = options[:object].present? ? options[:object].send(lng_column) || default_coordinates[1]  : default_coordinates[1]
         prefix = options[:object].present? ? options[:object].class.name.downcase : "gmap_coordinate_picker"
+        autocomplete = options[:autocomplete] || GmapCoordinatesPicker.config.autocomplete
         lat_dom_id = "#{prefix}_#{lat_column}"
         lng_dom_id = "#{prefix}_#{lng_column}"
       end
@@ -25,6 +26,7 @@ module GmapCoordinatesPicker #:nodoc
           :map_container_class => options[:map_container_class] || GmapCoordinatesPicker.config.map_container_class,
           :map_width => options[:map_width] || GmapCoordinatesPicker.config.map_width,
           :map_height => options[:map_height] || GmapCoordinatesPicker.config.map_height,
+          :autocomplete => options[:autocomplete] || GmapCoordinatesPicker.config.autocomplete,
           :default_coordinates => options[:default_coordinates].empty? ?  GmapCoordinatesPicker.config.default_coordinates : options[:default_coordinates],
       }
 
@@ -37,6 +39,7 @@ module GmapCoordinatesPicker #:nodoc
           :map_container => "#{prefix}_#{lat_column}_#{lng_column}_container#{Time.now.to_i}",
           :lat_dom_id => lat_dom_id,
           :lng_dom_id => lng_dom_id,
+          :autocomplete => autocomplete,
           :lat_field => lat_lng_field(lat_column, lat_column_value, lat_dom_id, options),
           :lng_field => lat_lng_field(lng_column, lng_column_value, lng_dom_id, options)
       }
