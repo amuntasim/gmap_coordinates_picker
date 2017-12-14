@@ -22,18 +22,18 @@ gem " gmap_coordinates_picker"
 Then, add in your form:
 
 ```ruby
-<%= form.gmap_coordinate_picker :lat_column => 'latitude', :lng_column => 'longitude' , :zoom_level => 10, :default_coordinates => [lat,lng], autocomplete: { enable: true, class: 'form-control' }  %>
+<%= form.gmap_coordinate_picker api_key: GOOGLE_MAP_API_KEY, :lat_column => 'latitude', :lng_column => 'longitude' , :zoom_level => 10, :default_coordinates => [lat,lng], autocomplete: { enable: true, class: 'form-control' }  %>
 ```
 
 Or, user is as form helper:
 
 ```ruby
-<%= render_gmap_coordinate_picker :lat_column => 'latitude', :lng_column => 'longitude' , :zoom_level => 10, :default_coordinates => [lat,lng], autocomplete: { enable: true, class: 'form-control' }  %>
+<%= render_gmap_coordinate_picker api_key: GOOGLE_MAP_API_KEY, :lat_column => 'latitude', :lng_column => 'longitude' , :zoom_level => 10, :default_coordinates => [lat,lng], autocomplete: { enable: true, class: 'form-control' }  %>
 ```
 To display static map:
 
 ```ruby
-<%= render_gmap_coordinate_picker :static => 'true', :zoom_level => 10 , :default_coordinates => [lat,lng]  %>
+<%= render_gmap_coordinate_picker api_key: GOOGLE_MAP_API_KEY,  :static => 'true', :zoom_level => 10 , :default_coordinates => [lat,lng]  %>
 ```
 
 
