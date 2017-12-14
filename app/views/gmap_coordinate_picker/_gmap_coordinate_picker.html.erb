@@ -1,7 +1,8 @@
 
 <script type="text/javascript">
+    var <%= map_handler%> = <%= map_handler%> || {};
+
     var afterGmapLoaded = function(){
-        var <%= map_handler%> = <%= map_handler%> || {};
 
         var marker = null;
         var latlng = new google.maps.LatLng(<%= default_coordinates[0]%>, <%=default_coordinates[1] %>);
