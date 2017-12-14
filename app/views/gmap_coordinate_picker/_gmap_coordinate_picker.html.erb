@@ -1,6 +1,7 @@
 
 <script type="text/javascript">
     var <%= map_handler%> = <%= map_handler%> || {};
+    var <%= map_handler%>Marker = <%= map_handler%>Marker || {};
 
     var afterGmapLoaded = function(){
 
@@ -22,10 +23,24 @@
             map:map
         });
         <% end%>
+        <%= map_handler%>Marker = marker;
 
         google.maps.event.addListener(map, 'click', function(e) {
             updateLocation(e.latLng);
         });
+
+        <% if autocomplete[:enable] %>
+        var input = document.getElementById('searchInput');
+        var autocomplete = new google.maps.places.Autocomplete(input);
+        autocomplete.bindTo('bounds', map);
+
+        autocomplete.addListener('place_changed', function() {
+            var place = autocomplete.getPlace();
+            var location = place.geometry.location;
+            updateLocation(location)
+            return;
+        });
+        <% end %>
 
         function updateLocation(location) {
             if(marker) {
@@ -36,6 +51,7 @@
                     map: map
                 });
             }
+            <%= map_handler%>Marker = marker;
 
             map.setCenter(location);
             jQuery("#<%= lat_dom_id%>").val(location.lat());
@@ -53,6 +69,12 @@
     }
 
 </script>
+<% if autocomplete[:enable] %>
+  <div>
+    <input type='text' class='<%= autocomplete[:class] %>' id='searchInput'/>
+  </div>
+  <br/>
+<% end %>
 <div class="<%= map_container_class%>" id="<%=map_container%>" style="<%= "width:#{map_width};height:#{map_height}"%>">
 </div>
 <%= lat_field%>
