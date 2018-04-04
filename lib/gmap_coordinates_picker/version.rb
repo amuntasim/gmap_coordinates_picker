@@ -1,3 +1,3 @@
 module GmapCoordinatesPicker
-  VERSION = "0.0.13"
+  VERSION = "0.1.2"
 end

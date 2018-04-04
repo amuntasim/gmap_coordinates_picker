@@ -6,7 +6,8 @@
     var afterGmapLoaded = function(){
 
         var marker = null;
-        var latlng = new google.maps.LatLng(<%= default_coordinates[0]%>, <%=default_coordinates[1] %>);
+        var latlng = new google.maps.LatLng(<%= lat_column_value || default_coordinates[0]%>, <%=lng_column_value || default_coordinates[1] %>);
+
 
         var myOptions = {
             zoom: <%=zoom_level %>,
