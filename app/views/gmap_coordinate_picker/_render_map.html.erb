@@ -1,32 +1,26 @@
-<%= javascript_include_tag ("https://maps.googleapis.com/maps/api/js?key=#{api_key}&sensor=false") %>
+<%= javascript_include_tag ("http://maps.googleapis.com/maps/api/js?key=#{api_key}") %>
 <script type="text/javascript">
     var <%= map_handler%> = <%= map_handler%> || {};
 
     jQuery(function () {
         var marker = null;
-        var defaultPoint = null
+        var latlng = new google.maps.LatLng(<%= default_coordinates[0]%>, <%=default_coordinates[1] %>);
 
-        try {
-            defaultPoint = new google.maps.LatLng(<%= default_coordinates[0]%>, <%=default_coordinates[1] %>);
-        }
-        catch (err) {
-
-        }
         var myOptions = {
             zoom: <%=zoom_level %>,
-            center: defaultPoint,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
+            center:latlng,
+            mapTypeId:google.maps.MapTypeId.ROADMAP
         };
 
         var map = new google.maps.Map(document.getElementById("<%=map_container%>"), myOptions);
         <%= map_handler%> = map;
 
         marker = new google.maps.Marker({
-            position: defaultPoint,
-            map: map
+            position:new google.maps.LatLng(<%= default_coordinates[0]%>,<%=default_coordinates[1] %>),
+            map:map
         });
 
     });
 </script>
-<div class="<%= map_container_class %>" id="<%= map_container %>" style="<%= "width:#{map_width};height:#{map_height}" %>">
+<div class="<%= map_container_class%>" id="<%=map_container%>" style="<%= "width:#{map_width};height:#{map_height}"%>">
 </div>
